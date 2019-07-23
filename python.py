@@ -1,8 +1,8 @@
-name = "Yogesh Kumar"
-PSNumber = 40003577
-weight = 60.25
-average = 49.06
-matches = 45
+name =  "Yogesh Kumar"
+PSNumber =  40003577
+weight =  60.25
+average =  49.06
+matches =  45
 # approach1
 print(name, PSNumber, weight)
 # approach2 using curl braces

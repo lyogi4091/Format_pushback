@@ -13,17 +13,15 @@ node {
                 if (Boolean.parseBoolean("${env.Autopep8}")){
                     sh 'sudo docker exec testcontainer_remote_pushback autopep8 -i /opt/python.py'
                     println "Code is now formatted"
+                    dir('/home/ciuser/Format_pushback'){
+                        try{
+                            sh 'sudo git add python.py'
+                            sh 'sudo git commit -m "Commit after autopep8"'
+                            sh 'sudo git push origin master'
+                        }catch (n){
+                            echo "No changes found to push."
+                        }
                 }
-                }
-    stage('Pushing the formatted code'){
-        dir('/home/ciuser/Format_pushback'){
-            try{
-			    sh 'sudo git add python.py'
-			    sh 'sudo git commit -m "Commit after autopep8"'
-			    sh 'sudo git push origin master'
-			    }catch (d){
-			        echo "No changes found to push."
-			        }
+            }
         }
     }
-}
